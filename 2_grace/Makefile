@@ -10,6 +10,6 @@ $(NAME):
 	$(CC) -o $(NAME) $(SRC)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(NAME) Grace_kid.c
 
 re: clean all
