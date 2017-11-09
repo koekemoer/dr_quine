@@ -10,6 +10,6 @@ $(NAME):
 	$(CC) -o $(NAME) $(SRC)
 
 clean: 
-	rm -f $(NAME)
+	rm -f $(NAME) Sully_*
 
 re: clean all
