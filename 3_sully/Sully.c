@@ -4,31 +4,16 @@
  and then runs the new program (which will have the name of its source file). */
 #include <stdio.h>
 #include <stdlib.h>
-#define D 34
-#define N 10
-#define S 39
-
+#include <fcntl.h>
+int i = 5;
 int main()
 {
-	FILE *fp;
-	char name[10] = {'S','u','l','l','y','_','X','.','c','\0'};
-	char *s1 = "/* SULLY */%c#include <stdio.h>%c#include <stdlib.h>%c#define Q 34%c#define N 10%c#define S 39%c%c";
-	char *s2 = "int main()%c{%cFILE *fp;%cchar name[10] = {%cS%c,%cu%c,%cl%c,%cl%c,%cy%c,%c_%c,%cX%c,%c.%c,%cc%c};%c";
-	char *s3 = "char *s1 = %c%s%c;%cchar *s2 = %c%s%c;%cchar *s3 = %c%s%c;%cchar *s4 = %c%s%c;%cchar i = 5;%cwhile (i > 0){%cname[6] = i + %c0%c;%cfp = fopen(name, %cw%c);%c";
-	char *s4 = "fprintf(fp,s1,N,N,N,N,N,N,N);%cfprintf(fp,s2,N,N,N,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,N);%cfprintf(fp,s3,D,s1,D,N,D,s2,D,N,D,s3,D,N,D,s4,D,N,N,N,S,S,N,D,D,N);%ci--;%cfclose(fp);%c}%creturn 0;%c}%c";
-	char i = 5;
-	char test[500];
-	sprintf(test, "BLABLABALBALBALBABLABLABLBLABLABLABLA\n");
-	printf("%s", test);
-	while (i > 0){
-		name[6] = i + '0';
-		fp = fopen(name, "w");
-		fprintf(fp,s1,N,N,N,N,N,N,N);
-		fprintf(fp,s2,N,N,N,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,N);
-		fprintf(fp,s3,D,s1,D,N,D,s2,D,N,D,s3,D,N,D,s4,D,N,N,N,S,S,N,D,D,N);
-		fprintf(fp,s4,N,N,N,N,N,N,N);
-		fclose(fp);
-		i--;
-	}
+	char comp[1024];
+	char *s = "#include <stdio.h>%c#include <stdlib.h>%c#include <fcntl.h>%cint i = %d;%cint main()%c{%cchar comp[1024];%cchar *s = %c%s%c;%csprintf(comp,%cSully_%cd.c%c,i);%cint fd = open(comp, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);%ci--;%cdprintf(fd,s,10,10,10,i,10,10,10,10,34,s,34,10,34,37,34,10,10,10,10,10,10);%creturn 0;%c}%c";
+	sprintf(comp,/*"gcc -Wall -Werror -Wextra -o Sully_%d */"Sully_%d.c",i);
+	int fd = open(comp, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+	i--;
+	dprintf(fd,s,10,10,10,i,10,10,10,10,34,s,34,10,34,37,34,10,10,10,10,10,10);
 	return 0;
 }
+// 37 = %

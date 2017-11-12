@@ -2,4 +2,4 @@ clear
 make re
 ./Sully
 echo "RESULT:"
-cat Sully_1.c
+cat Sully_5.c
