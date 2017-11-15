@@ -1,7 +1,3 @@
-/* SULLY - Polyglot Quine 
- When executed the program writes in a file named Sully_X.c. The X will be an
- interger given in the source. Once the file is created, the program compiles this file
- and then runs the new program (which will have the name of its source file). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -19,4 +15,3 @@ dprintf(fd,s,10,10,10,i,10,10,10,10,10,34,s,34,10,34,37,34,34,37,34,10,10,34,37,
 system(name);system(exec);
 return 0;
 }
-// 37 = %
