@@ -1,8 +1,8 @@
 # Comments are always useful
-s1 = "# Comments are always useful%cs1 = %c%s%c%cfilename = %cGrace_kid.py%c%c" % (10,34,s1,34,10,34,34,10)
+s1 = "# Comments are always useful%cs1 = %c%s%c%cfilename = %cGrace_kid.py%c%c"
 filename = "Grace_kid.py"
-kid_file = open(filename, "w")
-kid_file.write(s1)
+kid_file = open(filename, "w+")
+kid_file.write(s1 % (10,34,s1,34,10,34,34,10))
 kid_file.close()
  
 
